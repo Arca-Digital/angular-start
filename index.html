@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="todoApp">
+    <head>
+        <meta charset="UTF-8">
+		<link rel="icon" href="favicon.ico" type="image/x-icon"/>
+        <title>Arca Digital - Ecmascript 6 + Angular.js (V1.5)</title>
+		<script src="lib/angular.js"></script>
+        <script src="main.js"></script>
+    </head>
+    <body>
+        <h3>Simple demo of Angular.JS + Ecmascript 6</h3>		
+        <div>
+			<div ng-controller="TodoListController as todoList">
+				<h2>Todo</h2>
+				<span>{{todoList.remaining()}} of {{todoList.todos.length}} remaining</span>
+				[ <a href="" ng-click="todoList.archive()">archive</a> ]
+				<ul class="unstyled">
+					<li ng-repeat="todo in todoList.todos">
+					  <label class="checkbox" for="todoItemCheckbox">
+						<input type="checkbox" id="todoItemCheckbox" ng-model="todo.done">
+						<span class="done-{{todo.done}}">{{todo.text}}</span>
+					  </label>
+					</li>
+				</ul>
+				<form ng-submit="todoList.addTodo()">
+					<input type="text" ng-model="todoList.todoText"  size="30"
+						placeholder="add new todo here">
+					<input class="btn-primary" type="submit" value="add">
+				</form>
+			</div>
+		</div>
+    </body>
+</html>
